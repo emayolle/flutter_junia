@@ -24,6 +24,16 @@ class MyScaffold extends StatelessWidget {
         actions: <Widget>[
           if (authProvider.isLoggedIn)
             IconButton(
+              icon: const Icon(Icons.supervised_user_circle_rounded, color: Colors.white),
+              onPressed: () {
+                Navigator.pushNamed(
+                  context,
+                  '/users',
+                );
+              },
+            ),
+          if (authProvider.isLoggedIn)
+            IconButton(
               icon: const Icon(Icons.person, color: Colors.white),
               onPressed: () {
                 Navigator.pushNamed(
@@ -42,6 +52,7 @@ class MyScaffold extends StatelessWidget {
                 );
               },
             ),
+          
           IconButton(
             icon: Icon( authProvider.isLoggedIn ? Icons.logout : Icons.login, color: Colors.white),
             onPressed: () {

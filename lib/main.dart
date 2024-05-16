@@ -6,6 +6,7 @@ import 'package:flutter_junia/screens/home_screen.dart';
 import 'package:flutter_junia/screens/login_screen.dart';
 import 'package:flutter_junia/screens/message_screen.dart';
 import 'package:flutter_junia/screens/register_screen.dart';
+import 'package:flutter_junia/screens/users_screen.dart';
 import 'providers/auth_provider.dart';
 
 void main() {
@@ -34,7 +35,8 @@ class MainApp extends StatelessWidget {
         '/message': (context) => const MessageScreen(),
         '/register': (context) => const RegisterScreen(),
         '/login': (context) => LoginScreen(),
-        '/profile': (context) => const ProfileScreen()
+        '/profile': (context) => const ProfileScreen(),
+        '/users': (context) => const UsersScreen(),
       },
     );
   }

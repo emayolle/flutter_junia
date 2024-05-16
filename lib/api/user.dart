@@ -1,3 +1,4 @@
+import 'package:flutter_junia/model/user_model.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -46,5 +47,18 @@ Future<http.Response> login(String email, String password) async {
     return response;
   } else {
     throw Exception('Failed to login: ${response.reasonPhrase}');
+  }
+}
+
+class User {
+  static const String apiUrl = 'https://s3-5002.nuage-peda.fr/users';
+  Future<List<UserModel>> fetchUsers() async {
+    final response = await http.get(Uri.parse(apiUrl));
+    if (response.statusCode == 200) {
+      final List<dynamic> users = json.decode(response.body);
+      return users.map((json) => UserModel.fromJson(json)).toList();
+    } else {
+      throw Exception('Failed to load users');
+    }
   }
 }
