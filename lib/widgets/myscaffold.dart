@@ -27,6 +27,15 @@ class MyScaffold extends StatelessWidget {
               );
             },
           ),
+          IconButton(
+            icon: const Icon(Icons.login, color: Colors.white),
+            onPressed: () {
+              Navigator.pushNamed(
+                context,
+                '/login'
+              );
+            },
+          ),
         ],
       ),
       backgroundColor: const Color.fromRGBO(255, 255, 255, 1),

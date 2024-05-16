@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_junia/screens/about_screen.dart';
 import 'package:flutter_junia/screens/home_screen.dart';
+import 'package:flutter_junia/screens/login_screen.dart';
 import 'package:flutter_junia/screens/message_screen.dart';
 import 'package:flutter_junia/screens/register_screen.dart';
 
@@ -26,7 +27,7 @@ class MainApp extends StatelessWidget {
         '/about': (context) => const AboutScreen(),
         '/message': (context) => const MessageScreen(),
         '/register': (context) => const RegisterScreen(),
-        
+        '/login': (context) => LoginScreen(),
       },
     );
   }
