@@ -1,6 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import '../api/user.dart';
 import '../utils/secure_storage.dart';
+import 'package:provider/provider.dart';
+import '../providers/auth_provider.dart';
 
 class LoginForm extends StatefulWidget {
   @override
@@ -34,8 +38,17 @@ class _LoginFormState extends State<LoginForm> {
     try {
       final response =
           await login(_emailController.text, _passwordController.text);
+      final responseData = json.decode(response.body);
+
       await secureStorage.saveCredentials(
           _emailController.text, _passwordController.text);
+      await secureStorage.saveToken(responseData['token']);
+
+      Provider.of<AuthProvider>(context, listen: false).login(
+          _emailController.text,
+          responseData['user']['firstName'],
+          responseData['user']['lastName']);
+
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Authentification réussie')),
       );
